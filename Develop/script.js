@@ -15,7 +15,7 @@ var generatePassword = function () {
   );
 
   // if user choose character less than 7 or more than 128.
-  while (charLength <= 7 || charLength >= 128) {
+  if (charLength <= 7 || charLength >= 128) {
     window.alert("Password must be between  8 and 128 characters. Try again!");
     var charLength = window.prompt(
       "How many characters would you like your password to be? Choose between 8 and 128"
@@ -56,7 +56,7 @@ var generatePassword = function () {
     password += passwordCharSelection.specialChar;
   }
 
-  // if user skips numbers, uppercase, lowercase and special characters
+  // while loop if user skips numbers & uppercase & lowercase & special characters
   while (
     !confirmNumbers &&
     !confirmLowerCase &&
@@ -70,15 +70,22 @@ var generatePassword = function () {
     var confirmNumbers = window.confirm(
       "Will your password have numbers in it?"
     );
+    password += passwordCharSelection.numbers;
+
     var confirmLowerCase = window.confirm(
       "Will your password have lowercase letters in it?"
     );
+    password += passwordCharSelection.lowerCase;
+
     var confirmUpperCase = window.confirm(
       "Will your password have uppercase letters in it?"
     );
+    password += passwordCharSelection.upperCase;
+
     var specialCharacters = window.confirm(
       "Will your password have any special Characters in it?"
     );
+    password += passwordCharSelection.upperCase;
   }
   var randomPassword = [];
   for (var i = 0; i < charLength; i++) {
@@ -99,4 +106,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);
