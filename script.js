@@ -15,10 +15,15 @@ var generatePassword = function () {
   );
 
   // if user choose character less than 7 or more than 128.
-  if (charLength <= 7 || charLength >= 128) {
+  if (charLength < 8 || charLength > 128) {
     window.alert("Password must be between  8 and 128 characters. Try again!");
     var charLength = window.prompt(
       "How many characters would you like your password to be? Choose between 8 and 128"
+    );
+  }
+  while (charLength === !Number) {
+    var charLength = window.prompt(
+      "You must enter a number! Choose between 8 and 128 characters"
     );
   }
 
@@ -107,3 +112,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+//
